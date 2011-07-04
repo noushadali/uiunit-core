@@ -6,6 +6,10 @@
 	<property name="class.dir" value="${build.dir}/classes" />
 	<property name="jar.dir" value="${build.dir}/jar" />
 	
+	<property name="jar.dir" value="${build.dir}/jar" />
+	<property name="cordys.jar.dir" value="${lib.dir}/Cordys-jars" />
+	<property name="thirdparty.jar.dir" value="${lib.dir}/Third-party-jars" />
+	 
 	<property name="uiunit.classes.dir" value="${class.dir}/selenium-uiunit" />	
 	<property name="uiunit.src.dir" value="${basedir}/src/java" />
 	
@@ -22,14 +26,14 @@
 	</target>
 	
 	<path id="uiunit.classpath">
-		<fileset dir="${lib.dir}">
-			<include name="commons-httpclient-3.1.jar" />
-			<include name="junit-4.4.jar" />
-			<include name="log4j-2.1.15.jar" />
+		<fileset dir="${cordys.jar.dir}">
 			<include name="basicutil.jar" />
 			<include name="eibxml.jar" />
 		</fileset>
-		<fileset dir="${jar.dir}">
+		<fileset dir="${thirdparty.jar.dir}">
+			<include name="commons-httpclient-3.1.jar" />
+			<include name="junit-4.4.jar" />
+			<include name="log4j-2.1.15.jar" />
 			<include name="selenium-java-client-driver-1.0.1.jar" />
 		</fileset>
 	</path>
