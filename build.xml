@@ -1,0 +1,87 @@
+<project name="uiunits" default="dist" basedir=".">
+
+	<property name="lib.dir" value="${basedir}/lib" />
+	
+	<property name="build.dir" value="${basedir}/build" />
+	<property name="class.dir" value="${build.dir}/classes" />
+	<property name="jar.dir" value="${build.dir}/jar" />
+	
+	<property name="uiunit.classes.dir" value="${class.dir}/selenium-uiunit" />	
+	<property name="uiunit.src.dir" value="${basedir}/src/java" />
+	
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${build.dir}"/>
+	</target>
+	
+	<target name="dist" depends="clean,init,build-uiunit">
+		<echo>dist</echo>
+	</target>
+	
+	<path id="uiunit.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="commons-httpclient-3.1.jar" />
+			<include name="junit-4.4.jar" />
+			<include name="log4j-2.1.15.jar" />
+			<include name="basicutil.jar" />
+			<include name="eibxml.jar" />
+		</fileset>
+		<fileset dir="${jar.dir}">
+			<include name="selenium-java-client-driver-1.0.1.jar" />
+		</fileset>
+	</path>
+	
+	<target name="build-uiunit" depends="clean">
+		<delete dir="${jar.dir}/uiunit-selenium.jar"/>
+		<delete dir="${uiunit.classes.dir}"/>
+		<mkdir dir="${uiunit.classes.dir}"/>
+		<mkdir dir="${jar.dir}"/>
+
+		<javac srcdir="${uiunit.src.dir}" destdir="${uiunit.classes.dir}" debug="true" deprecation="on" optimize="true">
+			<classpath refid="uiunit.classpath"/>
+		</javac>
+
+		<copy todir="${uiunit.classes.dir}">
+			<fileset dir="${uiunit.src.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		
+		<jar jarfile="${jar.dir}/uiunit-selenium.jar" basedir="${uiunit.classes.dir}" />
+	</target>
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

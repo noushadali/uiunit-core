@@ -1,0 +1,2 @@
+version 1.0 (released on 2011-07-07)
+First release of UIUnit-core.
