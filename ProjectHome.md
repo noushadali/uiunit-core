@@ -1,0 +1,1 @@
+UIUnit-core is a JUnit based framework aimed at improving the quality of front-end pages and increasing developer productivity. It uses Selenium Remote Control.
